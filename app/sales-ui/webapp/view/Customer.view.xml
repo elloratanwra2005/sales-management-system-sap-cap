@@ -1,0 +1,138 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.Customer"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+<Page
+    title="Customers"
+    showNavButton="true"
+    navButtonPress=".onBack">
+
+    <content>
+
+        <Toolbar>
+
+            <Title text="Customers"/>
+
+            <ToolbarSpacer/>
+
+            <Button
+                text="Add Customer"
+                icon="sap-icon://add-contact"
+                type="Emphasized"
+                press=".onAddCustomer"/>
+
+            <SearchField
+                width="250px"
+                liveChange=".onSearch"/>
+
+            <Button
+                text="Refresh"
+                icon="sap-icon://refresh"
+                press=".onRefresh"/>
+
+        </Toolbar>
+
+        <Table
+            id="customerTable"
+            items="{/Customers}">
+
+            <columns>
+
+                <Column>
+                    <Text text="Customer Name"/>
+                </Column>
+
+                <Column>
+                    <Text text="Phone"/>
+                </Column>
+
+                <Column>
+                    <Text text="Email"/>
+                </Column>
+
+                <Column>
+                    <Text text="Address"/>
+                </Column>
+
+                <Column>
+                    <Text text="Edit"/>
+                </Column>
+
+                <Column>
+                    <Text text="Delete"/>
+                </Column>
+
+            </columns>
+
+            <items>
+
+                <ColumnListItem>
+
+                    <cells>
+
+                        <Text text="{customerName}"/>
+                        <Text text="{phone}"/>
+                        <Text text="{email}"/>
+                        <Text text="{address}"/>
+
+                        <Button
+                            icon="sap-icon://edit"
+                            press=".onEdit"/>
+
+                        <Button
+                            icon="sap-icon://delete"
+                            type="Reject"
+                            press=".onDelete"/>
+
+                    </cells>
+
+                </ColumnListItem>
+
+            </items>
+
+        </Table>
+
+    </content>
+
+</Page>
+
+<Dialog
+    id="editDialog"
+    title="Edit Customer">
+
+    <VBox class="sapUiMediumMargin">
+
+        <Label text="Customer Name"/>
+        <Input id="editCustomerName"/>
+
+        <Label text="Phone"/>
+        <Input id="editPhone"/>
+
+        <Label text="Email"/>
+        <Input id="editEmail"/>
+
+        <Label text="Address"/>
+        <Input id="editAddress"/>
+
+    </VBox>
+
+    <beginButton>
+
+        <Button
+            text="Save"
+            press=".onSaveEdit"/>
+
+    </beginButton>
+
+    <endButton>
+
+        <Button
+            text="Cancel"
+            press=".onCancelEdit"/>
+
+    </endButton>
+
+</Dialog>
+
+</mvc:View>

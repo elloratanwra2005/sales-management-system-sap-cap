@@ -1,0 +1,6 @@
+ID,customerID,customerName,phone,email,address
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa,C001,Reliance Industries,9876543210,reliance@gmail.com,Mumbai
+bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb,C002,Tata Steel,9876543211,tata@gmail.com,Jamshedpur
+cccccccc-cccc-cccc-cccc-cccccccccccc,C003,Indian Oil,9876543212,iocl@gmail.com,Delhi
+dddddddd-dddd-dddd-dddd-dddddddddddd,C004,BHEL,9876543213,bhel@gmail.com,Bhopal
+eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee,C005,NTPC,9876543214,ntpc@gmail.com,Noida

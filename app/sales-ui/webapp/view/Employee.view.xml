@@ -1,0 +1,183 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.Employee"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <Page
+        title="Employees"
+        showNavButton="true"
+        navButtonPress=".onBack"
+        class="sapUiResponsiveContentPadding">
+
+        <content>
+
+            <Table
+                id="employeeTable"
+                items="{/Employees}"
+                growing="true"
+                growingThreshold="20"
+                sticky="ColumnHeaders,HeaderToolbar"
+                alternateRowColors="true"
+                noDataText="No employees found">
+
+                <headerToolbar>
+                    <Toolbar>
+                        <core:Icon
+                            src="sap-icon://group"
+                            size="1.2rem"
+                            class="sapUiTinyMarginEnd"/>
+                        <Title text="Employees ({/Employees/length})" level="H2"/>
+                        <ToolbarSpacer/>
+                        <SearchField
+                            width="250px"
+                            placeholder="Search Employee"
+                            liveChange=".onSearch"
+                            class="sapUiTinyMarginEnd"/>
+                        <Button
+                            icon="sap-icon://refresh"
+                            tooltip="Refresh"
+                            press=".onRefresh"
+                            class="sapUiTinyMarginEnd"/>
+                        <Button
+                            text="Add Employee"
+                            icon="sap-icon://add-employee"
+                            type="Emphasized"
+                            press=".onAddEmployee"/>
+                    </Toolbar>
+                </headerToolbar>
+
+                <columns>
+
+                    <Column width="12%">
+                        <Text text="Employee ID"/>
+                    </Column>
+
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Name"/>
+                    </Column>
+
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Department"/>
+                    </Column>
+
+                    <Column minScreenWidth="Desktop" demandPopin="true">
+                        <Text text="Email"/>
+                    </Column>
+
+                    <Column
+                        width="6rem"
+                        hAlign="Center">
+                        <Text text="Actions"/>
+                    </Column>
+
+                </columns>
+
+                <items>
+
+                    <ColumnListItem>
+
+                        <cells>
+
+                            <ObjectIdentifier text="{employeeID}"/>
+
+                            <HBox alignItems="Center">
+                                <core:Icon
+                                    src="sap-icon://person-placeholder"
+                                    size="1.2rem"
+                                    class="sapUiTinyMarginEnd"/>
+                                <Text text="{name}"/>
+                            </HBox>
+
+                            <ObjectStatus
+                                text="{department}"
+                                state="Information"/>
+
+                            <Text text="{email}"/>
+
+                            <HBox justifyContent="Center">
+                                <Button
+                                    icon="sap-icon://edit"
+                                    type="Transparent"
+                                    tooltip="Edit Employee"
+                                    press=".onEdit"/>
+                                <Button
+                                    icon="sap-icon://delete"
+                                    type="Transparent"
+                                    tooltip="Delete Employee"
+                                    press=".onDelete"/>
+                            </HBox>
+
+                        </cells>
+
+                    </ColumnListItem>
+
+                </items>
+
+            </Table>
+
+        </content>
+
+    </Page>
+
+    <Dialog
+        id="editDialog"
+        title="Edit Employee"
+        contentWidth="450px"
+        resizable="true"
+        draggable="true">
+
+        <content>
+            <form:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                class="sapUiNoMarginBottom">
+
+                <Label text="Employee ID" required="true"/>
+                <Input id="editEmployeeID" editable="false"/>
+
+                <Label text="Name" required="true"/>
+                <Input id="editName" placeholder="Enter full name"/>
+
+                <Label text="Password"/>
+                <Input
+                    id="editPassword"
+                    type="Password"
+                    placeholder="Leave blank to keep unchanged"/>
+
+                <Label text="Department" required="true"/>
+                <Input id="editDepartment" placeholder="e.g. Sales, Finance, IT"/>
+
+                <Label text="Email" required="true"/>
+                <Input id="editEmail" type="Email" placeholder="name@company.com"/>
+
+            </form:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button
+                text="Save"
+                type="Emphasized"
+                icon="sap-icon://save"
+                press=".onSaveEdit"/>
+        </beginButton>
+
+        <endButton>
+            <Button
+                text="Cancel"
+                press=".onCancelEdit"/>
+        </endButton>
+
+    </Dialog>
+
+</mvc:View>

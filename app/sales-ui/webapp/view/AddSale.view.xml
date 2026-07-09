@@ -1,0 +1,80 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.AddSale"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+<Page
+    title="Record New Sale"
+    showNavButton="true"
+    navButtonPress=".onBack">
+
+    <content>
+
+        <VBox
+            width="450px"
+            class="sapUiMediumMargin">
+
+            <Label text="Employee"/>
+
+            <Select id="employeeSelect"/>
+
+            <Label
+                text="Customer"
+                class="sapUiSmallMarginTop"/>
+
+            <Select id="customerSelect"/>
+
+            <Label
+                text="Product"
+                class="sapUiSmallMarginTop"/>
+
+            <Select
+                id="productSelect"
+                change=".onProductChange"/>
+
+            <Label
+                text="Quantity"
+                class="sapUiSmallMarginTop"/>
+
+            <Input
+                id="quantity"
+                type="Number"
+                value="1"
+                liveChange=".calculateTotal"/>
+
+            <Label
+                text="Sale Date"
+                class="sapUiSmallMarginTop"/>
+
+            <DatePicker id="saleDate"/>
+
+            <Label
+                text="Total Amount"
+                class="sapUiSmallMarginTop"/>
+
+            <ObjectNumber
+                id="totalAmount"
+                number="0"
+                unit="₹"/>
+
+            <HBox class="sapUiLargeMarginTop">
+
+                <Button
+                    text="Save Sale"
+                    type="Emphasized"
+                    press=".onSave"/>
+
+                <Button
+                    text="Cancel"
+                    press=".onBack"
+                    class="sapUiTinyMarginBegin"/>
+
+            </HBox>
+
+        </VBox>
+
+    </content>
+
+</Page>
+
+</mvc:View>

@@ -1,0 +1,152 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.Product"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Products"
+        showNavButton="true"
+        navButtonPress=".onBack">
+
+        <content>
+
+            <Toolbar>
+
+                <Title text="Products"/>
+
+                <ToolbarSpacer/>
+
+                <Button
+    text="Add Product"
+    icon="sap-icon://add-product"
+    type="Emphasized"
+    press=".onAddProduct"/>
+
+                <SearchField
+                    width="250px"
+                    placeholder="Search Product"
+                    liveChange=".onSearch"/>
+
+            </Toolbar>
+
+            <Table
+                id="productTable"
+                items="{/Products}">
+
+                <columns>
+
+                    <Column>
+                        <Text text="Product ID"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Product Name"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Category"/>
+                    </Column>
+
+                    <Column hAlign="End">
+                        <Text text="Price"/>
+                    </Column>
+
+                    <Column hAlign="End">
+                        <Text text="Stock"/>
+                    </Column>
+
+                    <Column>
+    <Text text="Edit"/>
+</Column>
+
+<Column>
+    <Text text="Delete"/>
+</Column>
+
+                </columns>
+
+                <items>
+
+                    <ColumnListItem>
+
+                        <cells>
+
+                            <Text text="{productID}"/>
+
+<Text text="{productName}"/>
+
+<Text text="{category}"/>
+
+<ObjectNumber number="{price}"/>
+
+<ObjectNumber number="{stock}"/>
+
+                            <Button
+    icon="sap-icon://edit"
+    type="Transparent"
+    press=".onEdit"/>
+
+<Button
+    icon="sap-icon://delete"
+    type="Reject"
+    press=".onDelete"/>
+
+                        </cells>
+
+                    </ColumnListItem>
+
+                </items>
+
+            </Table>
+
+        </content>
+
+    </Page>
+
+    <Dialog
+    id="editDialog"
+    title="Edit Product">
+
+    <VBox class="sapUiMediumMargin">
+
+        <Label text="Product Name"/>
+
+        <Input id="editName"/>
+
+        <Label text="Category"/>
+
+        <Input id="editCategory"/>
+
+        <Label text="Price"/>
+
+        <Input
+            id="editPrice"
+            type="Number"/>
+
+        <Label text="Stock"/>
+
+        <Input
+            id="editStock"
+            type="Number"/>
+
+    </VBox>
+
+    <beginButton>
+
+        <Button
+    text="Save"
+    press=".onSaveEdit"/>
+
+    </beginButton>
+
+    <endButton>
+
+        <Button
+            text="Cancel"
+            press=".onCancelEdit"/>
+
+    </endButton>
+
+</Dialog>
+
+</mvc:View>

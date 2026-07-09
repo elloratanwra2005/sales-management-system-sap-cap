@@ -1,0 +1,123 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+<Page
+    showHeader="false"
+    class="loginPage">
+
+<content>
+
+<HBox class="loginShell" height="100%">
+
+    <!-- ============ LEFT: Branding panel ============ -->
+    <VBox class="loginBrandPanel" justifyContent="Center" alignItems="Start">
+
+        <HBox alignItems="Center" class="loginBrandLogo">
+            <core:Icon src="sap-icon://sap-logo-shape" class="loginBrandLogoIcon"/>
+            <Text text="Sales Management System" class="loginBrandLogoText"/>
+        </HBox>
+
+        <Title
+            text="Manage your business,"
+            level="H1"
+            class="loginBrandHeadline"/>
+        <Title
+            text="all in one place."
+            level="H1"
+            class="loginBrandHeadline"/>
+
+        <Text
+            text="Track employees, products, customers and sales performance from a single dashboard built for speed and clarity."
+            class="loginBrandSubText"/>
+
+        <VBox class="loginBrandFeatures">
+
+            <HBox alignItems="Center" class="loginBrandFeatureItem">
+                <core:Icon src="sap-icon://accept" class="loginBrandFeatureIcon"/>
+                <Text text="Real-time sales &amp; revenue insights" class="loginBrandFeatureText"/>
+            </HBox>
+
+            <HBox alignItems="Center" class="loginBrandFeatureItem">
+                <core:Icon src="sap-icon://accept" class="loginBrandFeatureIcon"/>
+                <Text text="Centralized employee &amp; customer records" class="loginBrandFeatureText"/>
+            </HBox>
+
+            <HBox alignItems="Center" class="loginBrandFeatureItem">
+                <core:Icon src="sap-icon://accept" class="loginBrandFeatureIcon"/>
+                <Text text="Low-stock alerts before they become a problem" class="loginBrandFeatureText"/>
+            </HBox>
+
+        </VBox>
+
+    </VBox>
+
+    <!-- ============ RIGHT: Login form ============ -->
+    <VBox class="loginFormPanel" justifyContent="Center" alignItems="Center">
+
+        <VBox class="loginCard">
+
+            <VBox class="loginCardIconWrap" alignItems="Center">
+                <core:Icon src="sap-icon://employee" class="loginCardIcon"/>
+            </VBox>
+
+            <Title
+                text="Employee Login"
+                level="H2"
+                textAlign="Center"
+                class="loginCardTitle"/>
+
+            <Text
+                text="Sign in with your employee credentials to continue"
+                textAlign="Center"
+                class="loginCardSubText"/>
+
+            <VBox class="loginFieldGroup">
+
+                <Label text="Employee ID" labelFor="employeeID" class="loginFieldLabel"/>
+                <Input
+                    id="employeeID"
+                    placeholder="e.g. EMP1024"
+                    class="loginInput"/>
+
+                <Label text="Password" labelFor="password" class="loginFieldLabel sapUiSmallMarginTop"/>
+                <Input
+                    id="password"
+                    type="Password"
+                    placeholder="Enter your password"
+                    class="loginInput"/>
+
+            </VBox>
+
+            <HBox justifyContent="SpaceBetween" alignItems="Center" class="loginOptionsRow">
+                <CheckBox text="Remember me" class="loginRememberMe"/>
+                <Link text="Forgot password?" class="loginForgotLink"/>
+            </HBox>
+
+            <Button
+                text="Login"
+                type="Emphasized"
+                width="100%"
+                press=".onLogin"
+                class="loginBtn"/>
+
+            <Text
+                text="Having trouble signing in? Contact your system administrator."
+                textAlign="Center"
+                class="loginHelpText"/>
+
+        </VBox>
+
+        <Text text="© 2026 Sales Management System. All rights reserved." class="loginFooterText"/>
+
+    </VBox>
+
+</HBox>
+
+</content>
+
+</Page>
+
+</mvc:View>

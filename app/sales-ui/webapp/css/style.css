@@ -1,0 +1,665 @@
+/* ===================== Layout shell ===================== */
+
+.dashboardPage {
+    background: #F5F6F8;
+}
+
+.dashboardShell {
+    height: 100vh;
+    width: 100%;
+    align-items: stretch;
+}
+
+.dashboardMain {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    overflow-y: auto;
+    background: #F5F6F8;
+}
+
+/* ===================== Sidebar ===================== */
+
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: #FFFFFF;
+    border-right: 1px solid #E5E7EB;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.sidebarLogo {
+    padding: 1.25rem 1.25rem;
+    border-bottom: 1px solid #EEF0F3;
+}
+
+.sidebarLogoIcon {
+    color: #0854A0;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.sidebarLogoText {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1D2D3E;
+}
+
+.sidebarNav {
+    padding-top: 0.5rem;
+    background: transparent;
+}
+
+.sidebarItem {
+    margin: 0.15rem 0.75rem;
+    border-radius: 8px;
+    color: #4B5563;
+}
+
+.sidebarItemActive {
+    background: #E8F1FB;
+    color: #0854A0;
+    font-weight: 600;
+}
+
+.sidebarFooter {
+    padding: 1rem;
+    border-top: 1px solid #EEF0F3;
+}
+
+.sidebarUserCard {
+    background: #F5F6F8;
+    border-radius: 10px;
+    padding: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.sidebarUserAvatar {
+    font-size: 1.6rem;
+    color: #0854A0;
+    margin-right: 0.5rem;
+}
+
+.sidebarUserGreeting {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #1D2D3E;
+}
+
+.sidebarUserSub {
+    font-size: 0.72rem;
+    color: #8A94A6;
+}
+
+.sidebarLogoutBtn {
+    width: 100%;
+}
+
+/* ===================== Top bar ===================== */
+
+.topBar {
+    padding-bottom: 1rem;
+}
+
+.topBarTitle {
+    color: #1D2D3E;
+}
+
+.topBarIcon,
+.topBarAvatar {
+    margin-right: 1rem;
+    color: #6B7280;
+    font-size: 1.3rem;
+}
+
+.topBarUserName {
+    font-weight: 600;
+    color: #1D2D3E;
+}
+
+/* ===================== Welcome row ===================== */
+
+.welcomeRow {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+}
+
+.welcomeTitle {
+    color: #1D2D3E;
+    font-weight: 700;
+}
+
+.welcomeSubText {
+    color: #6B7280;
+    margin-top: 0.2rem;
+}
+
+.dateRangeBtn {
+    background: #FFFFFF;
+}
+
+/* ===================== KPI cards ===================== */
+
+.kpiRow {
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.kpiCard {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 1.1rem 1.25rem;
+    min-width: 220px;
+    flex: 1;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+    gap: 0.6rem;
+}
+
+.kpiIcon {
+    font-size: 1.6rem;
+    padding: 0.6rem;
+    border-radius: 12px;
+}
+
+.kpiIconBlue    { background: #E8F1FB; color: #0854A0; }
+.kpiIconGreen   { background: #E6F7EE; color: #1A9E5A; }
+.kpiIconPurple  { background: #F1EAFB; color: #7B4FE0; }
+.kpiIconTeal    { background: #E4F7F5; color: #0F9E93; }
+.kpiIconOrange  { background: #FDEFE4; color: #E07B1A; }
+
+.kpiLabel {
+    font-weight: 700;
+    color: #1D2D3E;
+    font-size: 0.95rem;
+}
+
+.kpiSubLabel {
+    color: #8A94A6;
+    font-size: 0.78rem;
+}
+
+.kpiValue {
+    color: #1D2D3E;
+    font-weight: 700;
+}
+
+.kpiLink {
+    color: #0854A0;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.kpiLinkWarning {
+    color: #E07B1A;
+}
+
+.kpiTrendUp {
+    color: #1A9E5A;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.kpiCardWarning .kpiValue,
+.kpiCardWarning .kpiIcon {
+    color: #E07B1A;
+}
+
+/* ===================== Chart cards ===================== */
+
+.chartsRow {
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    align-items: stretch;
+}
+
+.chartCard {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 1.1rem 1.25rem;
+    flex: 1;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+}
+
+.chartCardWide {
+    flex: 1.6;
+}
+
+.cardHeaderIcon {
+    font-size: 1.1rem;
+    color: #0854A0;
+    margin-right: 0.5rem;
+}
+
+.periodSelect {
+    max-width: 140px;
+}
+
+.chartFooterStats {
+    border-top: 1px solid #EEF0F3;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+}
+
+.statLabel {
+    color: #8A94A6;
+    font-size: 0.75rem;
+}
+
+.statValue {
+    color: #1D2D3E;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.statValueAccent {
+    color: #7B4FE0;
+}
+
+.categoryLegendList {
+    background: transparent;
+}
+
+.categoryLegendItem {
+    padding: 0.15rem 0;
+}
+
+.topProductsList {
+    background: transparent;
+}
+
+.topProductRow {
+    width: 100%;
+    padding: 0.4rem 0;
+}
+
+.topProductName {
+    font-weight: 600;
+    color: #1D2D3E;
+}
+
+.topProductRevenue {
+    font-weight: 600;
+    color: #1D2D3E;
+}
+
+.topProductBar {
+    width: 80%;
+}
+
+.topProductQty {
+    color: #8A94A6;
+    font-size: 0.8rem;
+}
+
+/* ===================== Bottom row ===================== */
+
+.bottomRow {
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.recentSalesCard {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 1.1rem 1.25rem;
+    flex: 2;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+}
+
+.recentSalesTable {
+    margin-top: 0.5rem;
+}
+
+.cellCenter {
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+
+.cellEnd {
+    text-align: right;
+    width: 100%;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.quickActionsCard {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 1.1rem 1.25rem;
+    flex: 1;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+}
+
+.quickActionsGrid {
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.quickActionTile {
+    width: 48%;
+    border-radius: 12px;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+}
+
+.qaGreen  { background: #E6F7EE; color: #1A9E5A; }
+.qaBlue   { background: #E8F1FB; color: #0854A0; }
+.qaPurple { background: #F1EAFB; color: #7B4FE0; }
+.qaOrange { background: #FDEFE4; color: #E07B1A; }
+
+/* ===================== Shell ===================== */
+
+.loginPage {
+    background: #FFFFFF;
+}
+
+.loginShell {
+    align-items: stretch;
+}
+
+/* ===================== Left branding panel ===================== */
+
+.loginBrandPanel {
+    flex: 1.1;
+    min-width: 420px;
+    height: 100vh;
+    padding: 4rem 4.5rem;
+    background: linear-gradient(160deg, #0854A0 0%, #063E7A 55%, #042A57 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.loginBrandPanel::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.loginBrandPanel::after {
+    content: "";
+    position: absolute;
+    bottom: -160px;
+    left: -100px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.loginBrandLogo {
+    margin-bottom: 3rem;
+}
+
+.loginBrandLogoIcon {
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    margin-right: 0.6rem;
+}
+
+.loginBrandLogoText {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+}
+
+.loginBrandHeadline {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 1.2;
+}
+
+.loginBrandSubText {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 420px;
+    margin-top: 1.25rem;
+}
+
+.loginBrandFeatures {
+    margin-top: 2.5rem;
+    gap: 0.9rem;
+}
+
+.loginBrandFeatureItem {
+    gap: 0.6rem;
+    margin-bottom: 0.9rem;
+}
+
+.loginBrandFeatureIcon {
+    color: #7CD5C0;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    padding: 0.35rem;
+    margin-right: 0.6rem;
+}
+
+.loginBrandFeatureText {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.92rem;
+}
+
+/* ===================== Right form panel ===================== */
+
+.loginFormPanel {
+    flex: 1;
+    height: 100vh;
+    background: #F5F6F8;
+    padding: 2rem;
+}
+
+.loginCard {
+    background: #FFFFFF;
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(16, 24, 40, 0.08);
+    padding: 2.5rem 2.75rem;
+    width: 400px;
+    gap: 0.25rem;
+}
+
+.loginCardIconWrap {
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+
+.loginCardIcon {
+    background: #E8F1FB;
+    color: #0854A0;
+    font-size: 1.8rem;
+    padding: 0.85rem;
+    border-radius: 14px;
+}
+
+.loginCardTitle {
+    color: #1D2D3E;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.loginCardSubText {
+    color: #8A94A6;
+    font-size: 0.85rem;
+    margin-bottom: 1.75rem;
+}
+
+.loginFieldGroup {
+    width: 100%;
+    gap: 0.25rem;
+}
+
+.loginFieldLabel {
+    color: #1D2D3E;
+    font-weight: 600;
+    font-size: 0.82rem;
+    margin-bottom: 0.3rem;
+}
+
+.loginInput {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.loginOptionsRow {
+    width: 100%;
+    margin-top: 1.1rem;
+    margin-bottom: 1.4rem;
+}
+
+.loginRememberMe {
+    font-size: 0.82rem;
+    color: #4B5563;
+}
+
+.loginForgotLink {
+    font-size: 0.82rem;
+    color: #0854A0;
+    font-weight: 600;
+}
+
+.loginBtn {
+    border-radius: 10px;
+    height: 2.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.loginHelpText {
+    color: #8A94A6;
+    font-size: 0.78rem;
+    margin-top: 1.25rem;
+}
+
+.loginFooterText {
+    color: #B0B7C3;
+    font-size: 0.78rem;
+    margin-top: 1.5rem;
+}
+
+/* ===================== Responsive ===================== */
+
+@media (max-width: 900px) {
+    .loginBrandPanel {
+        display: none;
+    }
+    .loginFormPanel {
+        flex: 1;
+        width: 100%;
+    }
+}
+
+/* ===================== Form page shell ===================== */
+/* Reusable across AddCustomer, AddEmployee, AddProduct, AddSale, etc. */
+
+.formPage {
+    background: #F5F6F8;
+}
+
+.formPageWrap {
+    padding: 2.5rem 1.5rem;
+    min-height: 100%;
+}
+
+/* ===================== Card ===================== */
+
+.formCard {
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(16, 24, 40, 0.06);
+    width: 100%;
+    max-width: 720px;
+    padding: 2rem 2.25rem;
+}
+
+.formCardHeader {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #EEF0F3;
+}
+
+.formCardHeaderIcon {
+    background: #E8F1FB;
+    color: #0854A0;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 12px;
+    margin-right: 1rem;
+}
+
+.formCardTitle {
+    color: #1D2D3E;
+    font-weight: 700;
+}
+
+.formCardSubText {
+    color: #8A94A6;
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+}
+
+/* ===================== Fields ===================== */
+
+.formGrid {
+    row-gap: 0.5rem;
+}
+
+.formFieldGroup {
+    margin-bottom: 1.25rem;
+    gap: 0.3rem;
+}
+
+.formLabel {
+    color: #1D2D3E;
+    font-weight: 600;
+    font-size: 0.82rem;
+    margin-bottom: 0.3rem;
+}
+
+.formInput {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ===================== Actions ===================== */
+
+.formActionsRow {
+    margin-top: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #EEF0F3;
+}
+
+.formCancelBtn {
+    border-radius: 10px;
+    color: #4B5563;
+}
+
+.formSaveBtn {
+    border-radius: 10px;
+    font-weight: 600;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* ===================== Responsive ===================== */
+
+@media (max-width: 600px) {
+    .formCard {
+        padding: 1.5rem;
+    }
+}

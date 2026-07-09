@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="SalesService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation Term="Core.Links">
+                <Collection>
+                    <Record>
+                        <PropertyValue Property="rel" String="author"/>
+                        <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+                    </Record>
+                </Collection>
+            </Annotation>
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Employees" EntityType="SalesService.Employees"/>
+                <EntitySet Name="Products" EntityType="SalesService.Products"/>
+                <EntitySet Name="Sales" EntityType="SalesService.Sales">
+                    <NavigationPropertyBinding Path="employee" Target="Employees"/>
+                    <NavigationPropertyBinding Path="product" Target="Products"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="Employees">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="employeeID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="name" Type="Edm.String" MaxLength="100"/>
+                <Property Name="password" Type="Edm.String" MaxLength="100"/>
+                <Property Name="department" Type="Edm.String" MaxLength="50"/>
+                <Property Name="email" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="Products">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="productID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="productName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="category" Type="Edm.String" MaxLength="50"/>
+                <Property Name="price" Type="Edm.Decimal" Precision="10" Scale="2"/>
+                <Property Name="stock" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="Sales">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="saleID" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="employee" Type="SalesService.Employees">
+                    <ReferentialConstraint Property="employee_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="employee_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="product" Type="SalesService.Products">
+                    <ReferentialConstraint Property="product_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="product_ID" Type="Edm.Guid"/>
+                <Property Name="quantity" Type="Edm.Int32"/>
+                <Property Name="saleDate" Type="Edm.Date"/>
+            </EntityType>
+            <Annotations Target="SalesService.Employees/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="SalesService.Products/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="SalesService.Sales/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,52 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.AddProduct"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Add Product"
+        showNavButton="true"
+        navButtonPress=".onBack">
+
+        <content>
+
+            <VBox
+                class="sapUiMediumMargin"
+                width="400px">
+
+                <Label text="Product ID"/>
+                <Input id="productID"/>
+
+                <Label text="Product Name"/>
+                <Input id="productName"/>
+
+                <Label text="Category"/>
+                <Input id="category"/>
+
+                <Label text="Price"/>
+                <Input id="price" type="Number"/>
+
+                <Label text="Stock"/>
+                <Input id="stock" type="Number"/>
+
+                <HBox class="sapUiMediumMarginTop">
+
+                    <Button
+                        text="Save"
+                        type="Emphasized"
+                        press=".onSave"/>
+
+                    <Button
+                        text="Cancel"
+                        class="sapUiTinyMarginBegin"
+                        press=".onBack"/>
+
+                </HBox>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

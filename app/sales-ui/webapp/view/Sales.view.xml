@@ -1,0 +1,117 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.Sales"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Sales"
+        showNavButton="true"
+        navButtonPress=".onBack">
+
+        <content>
+
+            <Toolbar>
+
+                <Title text="Sales"/>
+
+                <ToolbarSpacer/>
+
+
+                    <Button
+    text="Add Sale"
+    icon="sap-icon://add"
+    type="Emphasized"
+    press=".onAddSale"/>
+
+<SearchField
+    width="250px"
+    placeholder="Search Sales"
+    liveChange=".onSearch"/>
+
+<Button
+    text="Refresh"
+    icon="sap-icon://refresh"
+    press=".onRefresh"/>
+
+            </Toolbar>
+
+            <Table
+                id="salesTable"
+                items="{sales>/sales}">
+
+                <columns>
+
+                    <Column>
+                        <Text text="Sale ID"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Employee"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Product"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Quantity"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Amount"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Date"/>
+                    </Column>
+                    
+
+                    <Column>
+    <Text text="Customer"/>
+</Column>
+
+<Column>
+    <Text text="Delete"/>
+</Column>
+
+                </columns>
+
+                <items>
+
+                    <ColumnListItem>
+
+                        <cells>
+
+                            <Text text="{sales>saleID}"/>
+
+                            <Text text="{sales>employeeName}"/>
+
+                            <Text text="{sales>productName}"/>
+
+                            <Text text="{sales>quantity}"/>
+
+                            <ObjectNumber
+                                number="{sales>totalAmount}"/>
+
+                            <Text text="{sales>saleDate}"/>
+
+                            <Text text="{sales>customerName}"/>
+
+<Button
+    icon="sap-icon://delete"
+    type="Reject"
+    press=".onDelete"/>
+
+                        </cells>
+
+                    </ColumnListItem>
+
+                </items>
+
+            </Table>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

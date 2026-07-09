@@ -1,0 +1,109 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.AddEmployee"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <Page
+        title="Add Employee"
+        showNavButton="true"
+        navButtonPress=".onBack"
+        class="sapUiResponsiveContentPadding">
+
+        <content>
+
+            <Panel
+                headerText="Employee Details"
+                expandable="false"
+                class="sapUiResponsiveMargin"
+                width="auto">
+
+                <headerToolbar>
+                    <Toolbar>
+                        <core:Icon
+                            src="sap-icon://employee"
+                            size="1.2rem"
+                            class="sapUiTinyMarginEnd"/>
+                        <Title text="Employee Details" level="H2"/>
+                        <ToolbarSpacer/>
+                    </Toolbar>
+                </headerToolbar>
+
+                <content>
+                    <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false">
+
+                        <core:Title text="Basic Information"/>
+
+                        <Label text="Employee ID" required="true"/>
+                        <Input
+                            id="employeeID"
+                            placeholder="e.g. EMP-1001"
+                            valueStateText="Employee ID is required">
+                            <layoutData>
+                                <FlexItemData/>
+                            </layoutData>
+                        </Input>
+
+                        <Label text="Name" required="true"/>
+                        <Input
+                            id="name"
+                            placeholder="Enter full name"/>
+
+                        <Label text="Password" required="true"/>
+                        <Input
+                            id="password"
+                            type="Password"
+                            placeholder="Enter a secure password"/>
+
+                        <Label text="Department" required="true"/>
+                        <Input
+                            id="department"
+                            placeholder="e.g. Sales, Finance, IT">
+                            <suggestionItems>
+                            </suggestionItems>
+                        </Input>
+
+                        <Label text="Email" required="true"/>
+                        <Input
+                            id="email"
+                            type="Email"
+                            placeholder="name@company.com"/>
+
+                    </form:SimpleForm>
+                </content>
+            </Panel>
+
+            <Toolbar class="sapUiResponsiveMargin" style="Clear">
+                <ToolbarSpacer/>
+                <Button
+                    text="Cancel"
+                    press=".onBack"
+                    class="sapUiTinyMarginEnd"/>
+                <Button
+                    text="Save Employee"
+                    type="Emphasized"
+                    icon="sap-icon://save"
+                    press=".onSave"/>
+            </Toolbar>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

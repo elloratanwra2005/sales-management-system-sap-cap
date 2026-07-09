@@ -1,0 +1,471 @@
+<mvc:View
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:vizData="sap.viz.ui5.data"
+    xmlns:vizFeeds="sap.viz.ui5.controls.common.feeds"
+    controllerName="salesmanagement.salesui.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout">
+
+<Page
+    showHeader="false"
+    class="dashboardPage">
+
+<content>
+
+<HBox class="dashboardShell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <VBox class="sidebar">
+
+        <HBox class="sidebarLogo" alignItems="Center">
+            <core:Icon src="sap-icon://sap-logo-shape" class="sidebarLogoIcon"/>
+            <Text text="Sales Management System" class="sidebarLogoText"/>
+            
+        </HBox>
+
+        <List
+            class="sidebarNav"
+            mode="None"
+            showSeparators="None">
+
+            <StandardListItem
+                title="Dashboard"
+                icon="sap-icon://home"
+                type="Navigation"
+                class="sidebarItem sidebarItemActive"
+                press=".onDashboard"/>
+
+            <StandardListItem
+                title="Employees"
+                icon="sap-icon://group"
+                type="Navigation"
+                class="sidebarItem"
+                press=".onEmployees"/>
+
+            <StandardListItem
+                title="Customers"
+                icon="sap-icon://customer"
+                type="Navigation"
+                class="sidebarItem"
+                press=".onCustomers"/>
+
+            <StandardListItem
+                title="Products"
+                icon="sap-icon://product"
+                type="Navigation"
+                class="sidebarItem"
+                press=".onProducts"/>
+
+            <StandardListItem
+                title="Sales"
+                icon="sap-icon://cart"
+                type="Navigation"
+                class="sidebarItem"
+                press=".onSales"/>
+
+            <StandardListItem
+                title="Reports"
+                icon="sap-icon://bar-chart"
+                type="Navigation"
+                class="sidebarItem"
+                press=".onReports"/>
+
+        </List>
+
+        <VBox class="sidebarFooter">
+
+            <HBox class="sidebarUserCard" alignItems="Center">
+                <core:Icon src="sap-icon://person-placeholder" class="sidebarUserAvatar"/>
+                <VBox>
+                    <Text text="Good Afternoon, {dashboard>/employeeName}" class="sidebarUserGreeting"/>
+                    <Text text="Have a productive day!" class="sidebarUserSub"/>
+                </VBox>
+            </HBox>
+
+            <Button
+                text="Logout"
+                icon="sap-icon://log"
+                class="sidebarLogoutBtn"
+                press=".onLogout"/>
+
+        </VBox>
+
+    </VBox>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <VBox class="dashboardMain">
+
+        <!-- Top bar -->
+        <HBox justifyContent="SpaceBetween" alignItems="Center" class="topBar">
+
+            <Title text="Sales Management System" level="H4" class="topBarTitle"/>
+
+            <HBox alignItems="Center" class="topBarActions">
+                <core:Icon
+                    src="sap-icon://bell"
+                    class="topBarIcon"
+                    press=".onNotifications"/>
+                <core:Icon src="sap-icon://person-placeholder" class="topBarAvatar"/>
+                <Text text="{dashboard>/employeeName}" class="topBarUserName"/>
+            </HBox>
+
+        </HBox>
+
+        <!-- Welcome row -->
+        <HBox justifyContent="SpaceBetween" alignItems="Center" class="welcomeRow">
+
+            <VBox>
+                <Title text="Welcome to Sales Management System" level="H2" class="welcomeTitle"/>
+                <Text text="Here's what's happening with your business today." class="welcomeSubText"/>
+            </VBox>
+
+            <HBox alignItems="Center">
+                <Button
+                    text="Today ({dashboard>/todayDateLabel})"
+                    icon="sap-icon://calendar"
+                    class="dateRangeBtn"
+                    press=".onDateRangePress"/>
+                <Button
+                    text="Refresh"
+                    icon="sap-icon://refresh"
+                    type="Emphasized"
+                    class="sapUiTinyMarginBegin"
+                    press=".onRefresh"/>
+            </HBox>
+
+        </HBox>
+
+        <!-- KPI cards (GenericTile = natively clickable) -->
+        <FlexBox wrap="Wrap" justifyContent="Start" class="kpiRow">
+
+            <GenericTile
+                class="sapUiTinyMarginEnd sapUiTinyMarginBottom kpiTile"
+                header="Employees"
+                subheader="Total Employees"
+                frameType="TwoByOne"
+                press=".onEmployees">
+                <TileContent>
+                    <NumericContent
+                        value="{dashboard>/employees}"
+                        icon="sap-icon://group"
+                        withMargin="false"/>
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                class="sapUiTinyMarginEnd sapUiTinyMarginBottom kpiTile"
+                header="Products"
+                subheader="Total Products"
+                frameType="TwoByOne"
+                press=".onProducts">
+                <TileContent>
+                    <NumericContent
+                        value="{dashboard>/products}"
+                        icon="sap-icon://product"
+                        withMargin="false"/>
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                class="sapUiTinyMarginEnd sapUiTinyMarginBottom kpiTile"
+                header="Sales"
+                subheader="Total Sales"
+                frameType="TwoByOne"
+                press=".onSales">
+                <TileContent>
+                    <NumericContent
+                        value="{dashboard>/sales}"
+                        icon="sap-icon://cart"
+                        withMargin="false"/>
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                class="sapUiTinyMarginEnd sapUiTinyMarginBottom kpiTile"
+                header="Total Revenue"
+                subheader=" "
+                frameType="TwoByOne"
+                press=".onSales">
+                <TileContent>
+                    <NumericContent
+                        value="{dashboard>/revenue}"
+                        icon="sap-icon://money-bills"
+                        valueColor="Good"
+                        indicator="{dashboard>/revenueIndicator}"
+                        withMargin="false"/>
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                class="sapUiTinyMarginEnd sapUiTinyMarginBottom kpiTile"
+                header="Low Stock"
+                subheader="Products Below 10"
+                frameType="TwoByOne"
+                press=".onLowStock">
+                <TileContent>
+                    <NumericContent
+                        value="{dashboard>/lowStock}"
+                        icon="sap-icon://alert"
+                        valueColor="Critical"
+                        withMargin="false"/>
+                </TileContent>
+            </GenericTile>
+
+        </FlexBox>
+
+        <!-- Charts row -->
+        <HBox class="chartsRow">
+
+            <!-- Sales Overview (LIVE, single chart, declaratively bound) -->
+            <VBox class="chartCard chartCardWide">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <HBox alignItems="Center">
+                        <core:Icon src="sap-icon://line-chart" class="cardHeaderIcon"/>
+                        <Title text="Sales Overview" level="H5"/>
+                    </HBox>
+                    <Select
+                        class="periodSelect"
+                        selectedKey="{dashboard>/period}"
+                        change=".onPeriodChange">
+                        <core:Item key="month" text="This Month"/>
+                        <core:Item key="week" text="This Week"/>
+                    </Select>
+                </HBox>
+
+                <viz:VizFrame
+                    id="salesOverviewChart"
+                    uiConfig="{applicationSet:'fiori'}"
+                    height="280px"
+                    width="100%"
+                    vizType="column"
+                    vizProperties="{dashboard>/salesOverviewProps}">
+                    <viz:dataset>
+                        <vizData:FlattenedDataset data="{dashboard>/salesOverview}">
+                            <vizData:dimensions>
+                                <vizData:DimensionDefinition name="Date" value="{dashboard>date}"/>
+                            </vizData:dimensions>
+                            <vizData:measures>
+                                <vizData:MeasureDefinition name="Revenue" value="{dashboard>revenue}"/>
+                            </vizData:measures>
+                        </vizData:FlattenedDataset>
+                    </viz:dataset>
+                    <viz:feeds>
+                        <vizFeeds:FeedItem uid="valueAxis" type="Measure" values="Revenue"/>
+                        <vizFeeds:FeedItem uid="categoryAxis" type="Dimension" values="Date"/>
+                    </viz:feeds>
+                </viz:VizFrame>
+
+                <HBox class="chartFooterStats" justifyContent="SpaceBetween">
+                    <VBox>
+                        <Text text="Total Revenue" class="statLabel"/>
+                        <Text text="₹ {dashboard>/revenue}" class="statValue"/>
+                    </VBox>
+                    <VBox>
+                        <Text text="Total Sales" class="statLabel"/>
+                        <Text text="{dashboard>/sales}" class="statValue"/>
+                    </VBox>
+                    <VBox>
+                        <Text text="Avg. Sale Value" class="statLabel"/>
+                        <Text text="₹ {dashboard>/avgSaleValue}" class="statValue statValueAccent"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Sales by Category (LIVE) -->
+            <VBox class="chartCard">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <HBox alignItems="Center">
+                        <core:Icon src="sap-icon://pie-chart" class="cardHeaderIcon"/>
+                        <Title text="Sales by Category" level="H5"/>
+                    </HBox>
+                </HBox>
+
+                <viz:VizFrame
+                    id="salesByCategoryChart"
+                    uiConfig="{applicationSet:'fiori'}"
+                    height="180px"
+                    width="100%"
+                    vizType="donut">
+                    <viz:dataset>
+                        <vizData:FlattenedDataset data="{dashboard>/salesByCategory}">
+                            <vizData:dimensions>
+                                <vizData:DimensionDefinition name="Category" value="{dashboard>category}"/>
+                            </vizData:dimensions>
+                            <vizData:measures>
+                                <vizData:MeasureDefinition name="Amount" value="{dashboard>amount}"/>
+                            </vizData:measures>
+                        </vizData:FlattenedDataset>
+                    </viz:dataset>
+                    <viz:feeds>
+                        <vizFeeds:FeedItem uid="size" type="Measure" values="Amount"/>
+                        <vizFeeds:FeedItem uid="color" type="Dimension" values="Category"/>
+                    </viz:feeds>
+                </viz:VizFrame>
+
+                <List
+                    items="{dashboard>/salesByCategory}"
+                    showSeparators="None"
+                    class="categoryLegendList">
+                    <StandardListItem
+                        title="{dashboard>category}"
+                        info="₹ {dashboard>amount} ({dashboard>percent}%)"
+                        icon="sap-icon://circle-task-2"
+                        class="categoryLegendItem"/>
+                </List>
+
+                <Link text="View Detailed Report →" press=".onSales" class="kpiLink"/>
+            </VBox>
+
+            <!-- Top Selling Products (LIVE) -->
+            <VBox class="chartCard">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <HBox alignItems="Center">
+                        <core:Icon src="sap-icon://favorite" class="cardHeaderIcon"/>
+                        <Title text="Top Selling Products" level="H5"/>
+                    </HBox>
+                    <Select
+                        class="periodSelect"
+                        selectedKey="{dashboard>/period}"
+                        change=".onPeriodChange">
+                        <core:Item key="month" text="This Month"/>
+                        <core:Item key="week" text="This Week"/>
+                    </Select>
+                </HBox>
+
+                <List
+                    items="{dashboard>/topProducts}"
+                    showSeparators="None"
+                    class="topProductsList">
+                    <CustomListItem type="Active" press=".onProductPress">
+                        <VBox class="topProductRow">
+                            <HBox justifyContent="SpaceBetween">
+                                <Text text="{dashboard>name}" class="topProductName"/>
+                                <Text text="₹ {dashboard>revenue}" class="topProductRevenue"/>
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                <ProgressIndicator
+                                    percentValue="{dashboard>sharePct}"
+                                    displayValue=" "
+                                    class="topProductBar"
+                                    state="Success"/>
+                                <Text text="{dashboard>qty}" class="topProductQty"/>
+                            </HBox>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+
+                <Link text="View All Products →" press=".onProducts" class="kpiLink"/>
+            </VBox>
+
+        </HBox>
+
+        <!-- Bottom row: Recent Sales + Quick Actions -->
+        <HBox class="bottomRow">
+
+            <VBox class="recentSalesCard">
+                <HBox alignItems="Center">
+                    <core:Icon src="sap-icon://history" class="cardHeaderIcon"/>
+                    <Title text="Recent Sales" level="H5"/>
+                </HBox>
+
+                <Table
+                    items="{dashboard>/recentSales}"
+                    class="recentSalesTable"
+                    showSeparators="None">
+                    <columns>
+                        <Column><Text text="Sale ID"/></Column>
+                        <Column><Text text="Product"/></Column>
+                        <Column><Text text="Customer"/></Column>
+                        <Column><Text text="Employee"/></Column>
+                        <Column hAlign="Center"><Text text="Quantity"/></Column>
+                        <Column hAlign="End"><Text text="Total Amount"/></Column>
+                        <Column hAlign="End"><Text text="Date"/></Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press=".onSalePress">
+                            <cells>
+                                <Text text="{dashboard>saleId}"/>
+                                <Text text="{dashboard>product}"/>
+                                <Text text="{dashboard>customer}"/>
+                                <Text text="{dashboard>employee}"/>
+                                <Text text="{dashboard>quantity}" class="cellCenter"/>
+                                <Text text="₹ {dashboard>totalAmount}" class="cellEnd"/>
+                                <Text text="{dashboard>date}" class="cellEnd"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+
+            <VBox class="quickActionsCard">
+                <HBox alignItems="Center">
+                    <core:Icon src="sap-icon://lightbulb" class="cardHeaderIcon"/>
+                    <Title text="Quick Actions" level="H5"/>
+                </HBox>
+
+                <FlexBox wrap="Wrap" class="quickActionsGrid">
+
+                    <GenericTile
+                        class="sapUiTinyMarginEnd sapUiTinyMarginBottom quickActionTile qaGreen"
+                        frameType="OneByOne"
+                        press=".onAddProduct">
+                        <TileContent>
+                            <VBox alignItems="Center" justifyContent="Center" class="qaTileInner">
+                                <core:Icon src="sap-icon://add-product" size="1.5rem"/>
+                                <Text text="Add Product"/>
+                            </VBox>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile
+                        class="sapUiTinyMarginEnd sapUiTinyMarginBottom quickActionTile qaBlue"
+                        frameType="OneByOne"
+                        press=".onAddSale">
+                        <TileContent>
+                            <VBox alignItems="Center" justifyContent="Center" class="qaTileInner">
+                                <core:Icon src="sap-icon://cart" size="1.5rem"/>
+                                <Text text="Add Sale"/>
+                            </VBox>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile
+                        class="sapUiTinyMarginEnd sapUiTinyMarginBottom quickActionTile qaPurple"
+                        frameType="OneByOne"
+                        press=".onAddCustomer">
+                        <TileContent>
+                            <VBox alignItems="Center" justifyContent="Center" class="qaTileInner">
+                                <core:Icon src="sap-icon://customer" size="1.5rem"/>
+                                <Text text="Add Customer"/>
+                            </VBox>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile
+                        class="sapUiTinyMarginEnd sapUiTinyMarginBottom quickActionTile qaOrange"
+                        frameType="OneByOne"
+                        press=".onAddEmployee">
+                        <TileContent>
+                            <VBox alignItems="Center" justifyContent="Center" class="qaTileInner">
+                                <core:Icon src="sap-icon://employee" size="1.5rem"/>
+                                <Text text="Add Employee"/>
+                            </VBox>
+                        </TileContent>
+                    </GenericTile>
+
+                </FlexBox>
+            </VBox>
+
+        </HBox>
+
+    </VBox>
+
+</HBox>
+
+</content>
+
+</Page>
+
+</mvc:View>

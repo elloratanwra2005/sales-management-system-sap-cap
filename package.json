@@ -1,0 +1,26 @@
+{
+  "name": "sales-cap",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+
+  "dependencies": {
+    "@sap/cds": "^10",
+    "@cap-js/sqlite": "^3"
+  },
+
+  "scripts": {
+    "start": "cds-serve"
+  },
+
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "db.sqlite"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<mvc:View
+    controllerName="salesmanagement.salesui.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <App id="app"/>
+
+</mvc:View>

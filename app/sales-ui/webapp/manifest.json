@@ -1,0 +1,199 @@
+{
+  "_version": "1.85.0",
+  "sap.app": {
+    "id": "salesmanagement.salesui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.27.0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/sales/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0",
+          "localUri": "localService/mainService/metadata.xml"
+        }
+      }
+    }
+  },
+
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+
+  "sap.ui5": {
+    "flexEnabled": true,
+
+    "dependencies": {
+      "minUI5Version": "1.149.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.viz": {}
+      }
+    },
+
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "salesmanagement.salesui.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+
+    "rootView": {
+      "viewName": "salesmanagement.salesui.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    },
+
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "path": "salesmanagement.salesui.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+
+      "routes": [
+        {
+          "pattern": "",
+          "name": "login",
+          "target": "login"
+        },
+        {
+          "pattern": "dashboard",
+          "name": "dashboard",
+          "target": "dashboard"
+        },
+        {
+          "pattern": "employees",
+          "name": "employees",
+          "target": "employees"
+        },
+        {
+          "pattern": "products",
+          "name": "products",
+          "target": "products"
+        },
+        {
+          "pattern": "sales",
+          "name": "sales",
+          "target": "sales"
+        },
+        {
+          "pattern": "addProduct",
+          "name": "addProduct",
+          "target": "addProduct"
+        },
+        {
+    "pattern": "customers",
+    "name": "customers",
+    "target": "customers"
+},
+{
+    "pattern": "addCustomer",
+    "name": "addCustomer",
+    "target": "addCustomer"
+},
+        {
+          "pattern": "addSale",
+          "name": "addSale",
+          "target": "addSale"
+        },
+        {
+  "pattern": "addEmployee",
+  "name": "addEmployee",
+  "target": "addEmployee"
+}
+      ],
+
+      "targets": {
+        "login": {
+          "type": "View",
+          "name": "Login"
+        },
+        "dashboard": {
+          "type": "View",
+          "name": "Dashboard"
+        },
+        "employees": {
+          "type": "View",
+          "name": "Employee"
+        },
+        "products": {
+          "type": "View",
+          "name": "Product"
+        },
+        "sales": {
+          "type": "View",
+          "name": "Sales"
+        },
+        "addProduct": {
+          "type": "View",
+          "name": "AddProduct"
+        },
+
+        "customers": {
+    "type": "View",
+    "name": "Customer"
+},
+
+"addCustomer": {
+    "type": "View",
+    "name": "AddCustomer"
+},
+        "addSale": {
+          "type": "View",
+          "name": "AddSale"
+        },
+        "addEmployee": {
+    "type": "View",
+    "name": "AddEmployee"
+}
+      }
+    }
+  }
+}

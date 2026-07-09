@@ -1,0 +1,4 @@
+saleID,employeeName,productName,quantity,totalAmount,saleDate
+S001,Rahul Sharma,Laptop,1,65000,2026-07-01
+S002,Priya Singh,Mouse,5,3750,2026-07-02
+S003,Rohit Kumar,Monitor,2,36000,2026-07-03
