@@ -1,19 +1,24 @@
+# Node modules
 node_modules/
-target/
-_out/
+
+# Database
+db.sqlite
+db.sqlite-shm
+db.sqlite-wal
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# Build output
+dist/
 gen/
 
-.cdsrc-private.json
-default-*.json
-*.sqlite
+# VS Code
+.vscode/
 
-# MTA
-mta_archives/
-*_mta_build_tmp
-*.mtar
-
-# Other
+# Mac/Windows
 .DS_Store
-
-# @cap-js/cds-typer
-@cds-models
+Thumbs.db
